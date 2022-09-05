@@ -1,0 +1,141 @@
+.book-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-top: 40px;
+}
+
+.title-box {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-content: center;
+    margin-bottom: 20px;
+}
+
+.title-box button {
+    margin-left: 10px;
+    height: 20px;
+    margin-top: 18px;
+}
+
+.book-image {
+    width: 25%;
+    max-width: 500px;
+    display: flex;
+}
+
+.book-image img {
+    width: 100%;
+}
+
+.book-info {
+    display: block;
+    width: 75%;
+    padding-left: 20px;
+    max-width: 500px;
+}
+
+.book-form {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    max-width: 300px;
+    padding: 0 20px;
+}
+
+.book-form button {
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+}
+
+.book-form label {
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.desc {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    font-size: 14px;
+}
+
+.page-title {
+    margin-bottom: 20px;
+}
+
+.modal {
+    background: #25262b;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    z-index: 10;
+    width: 75%;
+    height: 75%;
+    padding: 20px 30px;
+    border-radius: 5px;
+    text-align: center;
+    color: #32AEDA;
+    transform: translate(-50%, -20%);
+}
+
+.delete {
+    background: #D67E7E;
+    color: #25262b;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin-bottom: 20px;
+}
+
+.edit-form {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    max-width: 300px;
+    margin-top: 20px;
+}
+
+.edit-form button {
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+}
+
+.edit-form label {
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.modal-content span {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: right;
+    display: block;
+}
+
+@media screen and (max-width: 768px) {
+    .book-container {
+        flex-direction: column;
+    }
+    .book-image {
+        height: 300px;
+        margin-bottom: 20px;
+    }
+    .book-image img {
+        height: 300px;  
+        width: auto;
+    }
+    .book-info {
+        width: 100%;
+        padding-left: 0;
+    }
+}

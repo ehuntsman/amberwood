@@ -1,46 +1,66 @@
-# Getting Started with Create React App
+# Getting Started
+## Installing Dependencies
+Install Server Dependencies 
+```
+npm install
+```
+Install Client Dependencies
+```
+cd client/
+npm install
+```
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) TS template.
+## Start Development Server
+To start the server, run the following:
+```
+npm run dev
+```
 
-## Available Scripts
+# Database
+## Technologies
+* SQLite
+> The SQLite database is stored in a file locally.
 
-In the project directory, you can run:
+## Seeding Database
+The repository comes with the database pre-seeded. If you need to reset the database to its original state, run the following:
+```
+npm run seed
+```
 
-### `npm start`
+## Running SQL Queries on the Database
+This repository uses the `sqlite3` npm package. In `/db`, we already connect to the database file for you. Simply import `/db/index.js` to the file in which you need it and start running queries.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+For more information on how to use `sqlite3`, [read the docs here.](https://www.npmjs.com/package/sqlite3)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Changing the Database Structure
+If needed for your coding challenge, you may change the structure of the database. One way you could accomplish this is by:
 
-### `npm test`
+1. Deleting the file `/db/test.db`
+2. Changing the migration file (`/db/migrate.js`)
+3. Running `npm run migrate`
+4. If necessary, change the seed file (`/db/seed.js`) and run `npm run seed`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Server
+## Technologies
+* Node
+* Express
+* sqlite3
+## Server Requests
+The client is built using Create React App. The command listed above for starting the development server is enough to start the express server and Create React App. 
 
-### `npm run build`
+To make server requests, simply make the request with a relative path. The requests should already be proxied from the client server port (3000) to the express server port (8080).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+example:
+```
+// relative route
+await fetch('/my/route/here');
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+/* AVOID DOING THIS */
+// absolute route 
+await fetch('localhost:8080/my/route/here');
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+# Client
+## Technologies
+* React
+* React Router

@@ -1,0 +1,17 @@
+.footer {
+    display: none;
+}
+
+
+@media screen and (max-width: 768px) {
+    .footer {
+        flex-direction: column;
+        align-items: center;
+        display: flex;
+        align-items: top;
+        background-color: #282f4b;
+        padding: 20px;
+        margin-top: 20px;
+        width: 100%;
+    }
+}
