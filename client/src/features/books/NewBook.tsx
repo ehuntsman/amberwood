@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { assignBooks, addBook, bookSelector, Book } from './bookSlice';
+import { addBook, bookSelector, Book, getBooks } from './bookSlice';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { Link, useNavigate } from "react-router-dom";
 import './book.css'
@@ -9,7 +9,6 @@ export function NewBook() {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { books, isLoading, error } = useAppSelector(bookSelector);
-  const [newBook, setNewBook] = useState({});
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
   const [image, setImage] = useState('');
@@ -30,14 +29,13 @@ export function NewBook() {
       image: image,
       description: description,
     }
-    console.log(newBook);
-    setNewBook(newBook);
     dispatch(addBook(newBook));
     console.log(newBook, "this is")
-    sendToApi();
+    sendToApi(newBook);
   }
 
-  async function sendToApi() {
+  async function sendToApi(newBook: any) {
+    const id = books.length + 1;
     try {
       const { data } = await axios.post<Book>(
         '/books',
@@ -48,8 +46,9 @@ export function NewBook() {
             'Content-Type': 'application/json',
           },
         },
-        );  
+      );  
       console.log(newBook);
+      dispatch(getBooks());
       navigate('/');
       return data;
     } catch (error) {
@@ -64,7 +63,7 @@ export function NewBook() {
   }
   return (
     <div className="container">
-      <button>New Book</button>
+      <h1>Add a new book</h1>
       <div className="book-form">
         <label>Title</label>
         <input type="text" name="name" value={title} onChange={(e) => setTitle(e.target.value)}/>
@@ -77,7 +76,7 @@ export function NewBook() {
         <label>Price</label>
         <input type="number" name="price" value={price} onChange={(e) => setPrice(e.target.value)} />
         <label>Description</label>
-        <input type="text" name="description" value={description} onChange={(e) => setDescription(e.target.value)} />
+        <textarea name="description" value={description} onChange={(e) => setDescription(e.target.value)} />
         <button onClick={handleNewBook}>Submit</button>
       </div>
     </div>

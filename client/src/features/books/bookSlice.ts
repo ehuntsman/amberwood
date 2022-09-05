@@ -65,7 +65,8 @@ export const getBooks = (): AppThunk => async (dispatch) => {
     try {
       dispatch(setLoading(true));
       const res = await axios.get("/books");
-      dispatch(setBooksSuccess(res.data.data));
+      // dispatch(setBooksSuccess(res.data.data));
+      dispatch(assignBooks(res.data.data));
     } catch (error) {
       dispatch(setBooksFailed({ message: "An Error occurred" }));
     } finally {

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { updateBook, setLoading, bookSelector, Book } from './bookSlice';
+import { updateBook, setLoading, bookSelector, getBooks, Book } from './bookSlice';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { Link, Navigate, useNavigate  } from "react-router-dom";
 import axios from 'axios';
@@ -56,6 +56,7 @@ export function OneBook() {
         },
       );
       console.log('response is: ', data);
+      dispatch(getBooks());
       navigate('/');
       return data;
     } catch (error) {
@@ -94,6 +95,7 @@ export function OneBook() {
       );
       dispatch(updateBook(data));
       dispatch(setLoading(false));
+      dispatch(getBooks());
       navigate('/')
       return data;
     } catch (error) {
@@ -142,7 +144,7 @@ export function OneBook() {
               <label>Price</label>
               <input type="number" name="price" value={price} onChange={(e) => setPrice(e.target.value)} />
               <label>Description</label>
-              <input type="text" name="description" value={description} onChange={(e) => setDescription(e.target.value)} />
+              <textarea name="description" value={description} onChange={(e) => setDescription(e.target.value)} />
               <button onClick={sendToApi}>Update The Book</button>
             </div>
           </div>

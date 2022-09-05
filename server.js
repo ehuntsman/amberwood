@@ -58,7 +58,6 @@ app.post('/books', (req, res) => {
 	const sql = `
 		INSERT INTO BOOKS (name, author, genre, price, image, description) VALUES (?, ?, ?, ?, ?, ?);
 	`;
-	console.log(params, "thes aree params");
 	db.run(sql, params, function(err, result) {
 		if (err) {
 			res.status(400).json({

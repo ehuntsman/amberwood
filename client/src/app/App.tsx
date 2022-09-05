@@ -29,7 +29,6 @@ const App = () => {
         <Navi />
         {/* <div>
           <ul>
-            <li>api is updating but state is not refreshing</li>
             <li>links change color if active</li>
             <li>change readme</li>
           </ul>
