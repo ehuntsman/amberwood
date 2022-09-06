@@ -20,12 +20,17 @@ export function OneBook() {
   const [modalState, setModalState] = useState(false);
 
   useEffect(() => {
-    // not the best way to do this but filter wasn't working and the match docs are confusing
+    if(books.length === 0) {
+      dispatch(getBooks());
+    }
+    setUpState();
+  }, [books.length, dispatch]);
+
+  const setUpState = () => {
     const bookId = window.location.pathname.split('/')[2];
     // Probably should have this as an API call and then set it that way
     for(let i = 0; i < books.length; i++) {
       let bookNumber = books[i].id.toString();
-      console.log(books[i].id, "and ", bookId );
       if (bookNumber === bookId) {
         const thebook = books[i];
         setTitle(thebook.name);
@@ -37,7 +42,7 @@ export function OneBook() {
         setUpdatedBook(thebook);
       }
     }
-  }, []);
+  }
 
   const toggle = () => {
     setModalState(!modalState);
@@ -45,7 +50,6 @@ export function OneBook() {
 
   type DeleteBookResponse = ''
   const toDelete = async () => {
-    console.log(updatedBook, "to be deleted");
     try {
       const { data } = await axios.delete<DeleteBookResponse>(
         `/books/${updatedBook.id}`,
@@ -55,16 +59,13 @@ export function OneBook() {
           },
         },
       );
-      console.log('response is: ', data);
       dispatch(getBooks());
       navigate('/');
       return data;
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        console.log('error message: ', error.message);
         return error.message;
       } else {
-        console.log('unexpected error: ', error);
         return 'An unexpected error occurred';
       }
     }
@@ -100,10 +101,8 @@ export function OneBook() {
       return data;
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        console.log('error message: ', error.message);
         return error.message;
       } else {
-        console.log('unexpected error: ', error);
         return 'An unexpected error occurred';
       }
     }
@@ -116,10 +115,8 @@ export function OneBook() {
           <img src={image} alt={title} />
         </div>
         <div className="book-info">
-          <div className="title-box">
-            <h1>{title}</h1>
-            <button onClick={toggle}>Edit Book</button>
-          </div>
+          <h1>{title}</h1>
+          <button onClick={toggle}>Edit Book</button>
           <h4>By: {author}</h4>
           <p>{description}</p>
         </div>

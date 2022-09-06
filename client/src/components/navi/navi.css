@@ -24,3 +24,7 @@
         display: none;
     }
 }
+
+.active a {
+    color: #414e71;
+}

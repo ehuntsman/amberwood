@@ -43,7 +43,6 @@ export const bookSlice = createSlice({
           state.books.push(action.payload);   
         },
         updateBook: (state, action: PayloadAction<Book>) => {
-            console.log("triggered updateBook in reducer")
             const index = state.books.findIndex(book => book.name === action.payload.name);
             state.books[index] = action.payload;
         },

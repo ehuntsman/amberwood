@@ -17,7 +17,6 @@ import Footer from '../components/footer/Footer';
 
 const App = () => {
   const dispatch = useAppDispatch();
-  const { books } = useSelector(bookSelector);
 
   useEffect(() => {
     dispatch(getBooks());
@@ -27,12 +26,6 @@ const App = () => {
     <div className="app">
       <div className='main-container'>
         <Navi />
-        {/* <div>
-          <ul>
-            <li>links change color if active</li>
-            <li>change readme</li>
-          </ul>
-        </div> */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/books/new" element={<NewBook />} />

@@ -1,5 +1,14 @@
 .footer {
     display: none;
+    text-align: center;
+}
+
+.footer ul {
+    padding-left: 0;
+}
+
+.footer li {
+    list-style-type: none;
 }
 
 
@@ -8,7 +17,6 @@
         flex-direction: column;
         align-items: center;
         display: flex;
-        align-items: top;
         background-color: #282f4b;
         padding: 20px;
         margin-top: 20px;

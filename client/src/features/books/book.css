@@ -5,29 +5,38 @@
     margin-top: 40px;
 }
 
-.title-box {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    align-content: center;
-    margin-bottom: 20px;
-}
-
-.title-box button {
-    margin-left: 10px;
+.book-info button {
     height: 25px;
-    margin-top: 18px;
+    margin-bottom: 18px;
     width: 110px;
+    background: #25262b;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .book-image {
     width: 25%;
     max-width: 500px;
     display: flex;
+    animation: 0.25s ease-in 0s 1 slidedown;
+}
+
+@keyframes slidedown {
+    0% {
+        transform: translateY(-10%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 .book-image img {
     width: 100%;
+    border-radius: 5px;
 }
 
 .book-info {
@@ -41,21 +50,32 @@
     display: flex;
     flex-direction: column;
     margin: 0 auto;
-    max-width: 300px;
+    max-width: 500px;
     padding: 0 20px;
 }
 
 .book-form button {
     margin: 0 auto;
     margin-top: 20px;
-    padding: 5px 10px;
+    padding: 5px 20px;
     border-radius: 5px;
     border: none;
 }
 
+.book-form input, .book-form textarea {
+    margin: 0 auto;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    width: 300px;
+    max-width: 95%;
+}
+
 .book-form label {
     font-size: 14px;
-    margin-top: 5px;
+    margin-top: 10px;
+    text-align: center;
+    margin-bottom: 2px;
 }
 
 .desc {
@@ -66,10 +86,6 @@
     font-size: 14px;
 }
 
-.page-title {
-    margin-bottom: 20px;
-}
-
 .modal {
     background: #25262b;
     position: absolute;
@@ -77,8 +93,7 @@
     left: 50%;
     z-index: 10;
     width: 75%;
-    height: 75%;
-    padding: 20px 30px;
+    padding: 10px 20px;
     border-radius: 5px;
     text-align: center;
     color: #32AEDA;
@@ -92,6 +107,7 @@
     border-radius: 5px;
     padding: 5px 10px;
     margin-bottom: 20px;
+    cursor: pointer;
 }
 
 .edit-form {
@@ -99,7 +115,7 @@
     flex-direction: column;
     margin: 0 auto;
     max-width: 300px;
-    margin-top: 20px;
+    margin: 20px auto;
 }
 
 .edit-form button {
@@ -115,12 +131,19 @@
     margin-top: 5px;
 }
 
+.edit-form input {
+    border: none;
+    border-radius: 5px;
+    padding: 5px 2px 5px 10px;
+}
+
 .modal-content span {
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 20px;
     text-align: right;
     display: block;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 768px) {
