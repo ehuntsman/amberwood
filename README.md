@@ -12,7 +12,7 @@ npm install
 ```
 
 ## Start Development Server
-To start the server, run the following:
+To start the server, be in the main folder (make sure you are not in the client folder) and run the following:
 ```
 npm run dev
 ```
